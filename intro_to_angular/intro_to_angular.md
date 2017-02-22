@@ -395,10 +395,6 @@ Add this HTML to _index.html_:
 ...
 ```
 
-Nice!
-
-Who hates hooking up event listeners for the _click_ event? Me too. Angular makes it easy:
-
 ```js
 ...
       vm.names = ['Nicole', 'Layne', 'Winford', 'Mattie', 'Lawanda'];
@@ -430,10 +426,6 @@ Add this HTML below the existing `<ul>`:
   </div>
 ...
 ```
-
-**Let review what's going on here.**
-
-Want more? Let's say we want to toggle the display of the names.
 
 **? Angular apps are driven by __________?**
 
@@ -479,63 +471,6 @@ All we need now is a toggle button outside of the `<div>` holding the names to t
 Cool! However, putting logic in the view instead of the controller is frowned upon. In this case, the code only has an impact on the UI, so it's acceptable.
 
 >**Note:** The way we've used custom attributes is not valid HTML5. If you work for a shop that insists on 100% compliant HTML, simply preface all Angular directives with `data-`, for example, `data-ng-model`.
-
-#### Practice (5 mins)
-
-A nice improvement would be to update the text in the button to just say "Show Names" or "Hide Names" instead of "Show/Hide Names".
-
-Pair up and make this happen!
-
-Hint: Our friend the ternary operator can come in handy here.
-
-**?: What if we wanted to show a different button entirely?**
-
-#### Directives as Attributes & Elements
-
-So far, we've seen directives being used as attributes in our HTML. However, another possibility is to use directives to create custom element tags!
-
-For example, you could write your own directives to for a game and use them like this:
-
-```html
-<body>
-  <game>
-    <score player="1"></score>
-    <score player="2"></score>
-    <game-board></game-board>
-  </game>
-</body>
-```
-
-Talk about semantic HTML and teaching HTML new tricks!
-
-#### Directives - Wrap Up
-
-**?: What does AngularJS do if there are no directives in the HTML?**
-
-**?: What directive do we use to create a two-way binding between an `<input>` in the view and a data property in the controller?**
-
-So far you've seen a few directives, however, there are over 50 included in the core of Angular.
-
-You'll see some more directives, as well as learn about some of the powerful options available to us with directives like `ng-repeat` in future lessons!
-
-### Services (including `factory`, `service`, `value`, `constant` & `provider`)
-
-Services allow us to share data and/or behavior between controllers, directives, filters and even other services. This keeps our code more DRY.
-
-They provide a way to organize related program logic and data together - in OOP, this is known as _encapsulation_.
-
-Services should be used to hold the bulk of your application's logic and data, thus keeping controllers lean and focused on what they are responsible for.
-
-There's another key reason to use services - they are more efficient because...
-
-Unlike controllers, which are instantiated and destroyed as the HTML they are attached come into and out of view via routing (or in other ways such as with the `ng-include` directive), services are created once and persist for the life of the application.
-<br>**?: In programming, what do we call an object that is designed to be instantiated only once?**
-
-The functionality and data packaged in services are provided to other components, e.g., controllers, using a process known as **dependency injection**. Dependency injection is really cool and we will talk about it more in a bit when we look at different ways to write controllers.
-
-There are a few different methods for creating services, the most popular being the `factory` method. The `service` method does pretty much do the same thing, but is instantiated differently (a _service_ is instantiated as a constructor function, whereas a _factory_ is written to return an object (most common), function, or scalar value directly).
-
-We will look at writing services in a future lesson.
 
 ### Filters
 
@@ -612,10 +547,6 @@ All model data and methods that you wanted accessible in the view, are now attac
 
 >**Note:** Most Angularians today are using the _controller as_ syntax for new development. However, there are a couple of methods only available on the `$scope` object, such as `$watch`, `$broadcast`, `$on` and `$apply`. If you find yourself needing to use these methods, you can still inject `$scope` even if you are using the _controller as_ approach.
 
-#### Individual Practice (5 mins)
-
-Convert our current app to use `$scope`.
-
 #### Dependency Injection
 
 So what's this with this "inject" stuff?
@@ -652,96 +583,9 @@ Angular's dependency injection magic works by converting the parameters names in
 
 Get in the habit of putting reusable code in services and injecting those services where they are needed - dependency injection will make you a happy developer!
 
-#### Minification
+#### Individual Practice (10 mins)
 
-To increase loading speeds, production JavaScript is often "minified", a process also known as "uglifying".
-
-Minification strips out whitespace, comments, and shortens variable and function identifiers to meaningless one or two character names.
-
-This process will break Angular's dependency injection system if we write the controllers the way have so far.<br>**?: Any idea as to why minification will break Angular's dependency injection with the way we've written our controllers so far?**
-
-#### What Do We Do?
-
-So, you've seen controllers that use both the `$scope` and the _controller as_ syntaxes.
-
-But the way we've written them so far is somewhat simplified to make them easier to learn, but they are not safe from minification.
-
-There are two different ways to make our controller functions min-safe, and you will see both in use.
-
-Additionally, we used an anonymous function for our controller function, we'll now look at using function declarations as it is considered a better practice.
-
-#### Min-Safe Approach - `$inject` (Style Guide Recommended)
-
-```js
-...
-  .controller('MainController', MainController);
-
-  MainController.$inject = ['$scope', '$http'];
-
-  function MainController ($scope, $http) {
-  // controller code
-  }
-```
-
-Here we are setting a `$inject` property with an array of dependencies. Angular will now use this list to know which dependencies to provide to the controller function.
-
-This cures our minification problem because the dependencies listed in the array are strings, and because strings are data, they are never changed by minifiers.
-
-However, it's important to ensure the order of the parameters in the array and the constructor function line up positionally.
-
-#### Min-Safe Approach - Array Annotation (AngularJS Recommended)
-
-There's lots of code out there that uses Array Annotation to make their Angular apps min-safe. Even Angular's docs do it this way:
-
-```js
-...
-  .controller('MainController', ['$scope', '$http', MainController]);
-
-  function MainController ($scope, $http) {
-  }
-```
-
-Here we are passing an array as the second argument to our `controller()` method instead of a function.
-
-With this method signature, the controller function, whether inline or declared, is always the last element in the array.
-
-Again, be sure the arguments in the function are in the same order as they are in the array.
-
-That wasn't too bad now, was it?
-
-Here's a [gist](https://gist.github.com/jim-clark/a0e6a60e1eba0672b9cb) that shows all of the minification-safe flavors of the controller we used this lesson.
-
-### Questions
-
-Discuss with a pair for thee minutes:
-
-- **Filters are used to _____________ data.**
-
-- **What are the two primary responsibilities of a controller in Angular?**
-
-- **Is it possible to have data and/or functions inside controllers that are NOT accessible to the view?**
-
-- **When using Array Annotation to define a min-safe controller, is the actual controller function put inside or outside the array?**
-
-- **What are the benefits of using Service components?**
-
-- **What are some benefits that AngularJS provides to us when developing SPAs?**
-
-## Exercise - Create a To Do App
-
-#### Pair Up for this Excercise
-
-#### Create a To Do app using the power of AngularJS.  Your app should be able to:
-
-- Display a list of tasks.
-
-- Display a "Done" button with each task.
-
-- When the user clicks the "Done" button next to the task, that task should be removed from the list.
-
-- Provide the ability for the user to add new tasks.
-
-- **Hint**: Knowing which task to remove is important. You can actually pass the current object in a `ng-repeat` loop to a method, however, since we only need to know the position of the task in the array, check out the `$index` property available in the `ng-repeat` template. In this case, `$index` would make a great argument in a method call ;)
+Convert our current app to use `$scope`.
 
 ## References
 - [Official AngularJS website](https://angularjs.org/)
