@@ -267,28 +267,6 @@ All of Angular's built-in directives will start with `ng`.
 
 For clarity, third-party, as well as your own custom directives (yes, you can!), should start with something other than `ng`.
 
-### Config & Routes
-
-Each AngularJS module has a `config` method that allows us to provide code that runs when a module is loaded.
-
-The `config` method is where we would define our client-side routing.
-
-We will discuss the key to advanced SPAs, **client-side routing**, in a later lesson.
-
-### Checkpoint Questions
-
-Take a few minutes to discuss the following questions with a neighbor:
-
-- **What type of component do other Angular components need to register themselves with?**
-
-- **How many modules can an Angular app have?**
-
-- **What is the syntax to define a new module?**
-
-- **What is the syntax to get/retrieve a previously defined module?**
-
-- **What directive specifies the app's "main" module so that Angular knows which module to use to bootstrap the app with?**
-
 ### Controllers
 
 Controllers in AngularJS serve two primary purposes:
