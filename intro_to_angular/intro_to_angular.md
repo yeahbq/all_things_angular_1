@@ -179,13 +179,11 @@ After adding a `class="container"` to `<body>`, our `index.html` should now look
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
 </head>
-<body >
-  <div>
-    
-  </div>
+<body class="container">
+  
   <script src="js/app.js"></script>
 </body>
 </html>
@@ -324,7 +322,7 @@ First, create the data property in our controller:
 
    // Data and methods "attached" to vm are
    // accessible to bind to in the view.
-  vm.title = 'AngularJS, the Superheroic MVW Framework';
+  vm.greeting = 'AngularJS, the Superheroic MVW Framework';
 
 });
 ```
@@ -333,7 +331,7 @@ Then, bind the `title` to our view:
 
 ```html
 <body class="container" ng-controller="MainController as ctrl">
-  <h1>{{ctrl.title}}</h1>
+  <h1>{{ctrl.greeting}}</h1>
 
 </body>
 ```
@@ -341,6 +339,24 @@ Then, bind the `title` to our view:
 Cool!
 
 >**Note:** Since the function we use to define controllers are treated as constructor functions, the code in the function will execute only once. Therefore, be sure to code your controllers to initialize data the view needs and define the methods that will run in response to user actions.
+
+### Two-way Data Binding
+
+We have seen how the view binds to the controller. But as we discussed earlier, the data properties in the controller can also bind to the view using the `ng-model` directive like this:
+
+```html
+<body class="container" ng-controller="MainController as ctrl" style="background-color:{{ctrl.crazyColor}}" >
+  <h1>{{ctrl.title}}</h1>
+  <label>Color: <input type="text" class="form-control" ng-model="ctrl.crazyColor"></label>
+
+</body>
+```
+
+Obviously there are better ways in Angular to dynamically style elements using directives such as `ng-class`, however, this example vividly demonstrates Angular's two-way binding capability.
+
+>**Note:** `ng-model` will create the data property if it does not already exist in the controller, however, it's a good practice to be explicit and declare all properties in your controller even if they are going to be created by an `ng-model`.
+
+**Try initializing `crazyColor` in the controller with your favorite color!**
 
 ### Directives
 
