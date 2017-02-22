@@ -311,7 +311,7 @@ Without further ado, let's define our first AngularJS controller and register it
   // We can then register our controller with our module
   // using the 'controller()' method.
   angular.module('myApp', [])
-    .controller('myCtrl', function() {
+    .controller('MainController', function() {
       //code goes here
     });
 ```
@@ -363,26 +363,6 @@ Then, bind the `title` to our view:
 Cool!
 
 >**Note:** Since the function we use to define controllers are treated as constructor functions, the code in the function will execute only once. Therefore, be sure to code your controllers to initialize data the view needs and define the methods that will run in response to user actions.
-
-### Two-way Data Binding
-
-We have seen how the view binds to the controller. But as we discussed earlier, the data properties in the controller can also bind to the view using the `ng-model` directive like this:
-
-```html
-<body class="container" style="background-color:{{ctrl.crazyColor}}" ng-controller="MainController as ctrl">
-  <h1>{{ctrl.title}}</h1>
-  <label>Color: <input type="text" class="form-control" ng-model="ctrl.crazyColor"></label>
-
-</body>
-```
-
-Obviously there are better ways in Angular to dynamically style elements using directives such as `ng-class`, however, this example vividly demonstrates Angular's two-way binding capability.
-
->**Note:** `ng-model` will create the data property if it does not already exist in the controller, however, it's a good practice to be explicit and declare all properties in your controller even if they are going to be created by an `ng-model`.
-
-**Try initializing `crazyColor` in the controller with your favorite color!**
-
-**?: What would we have to do to recreate this functionality without Angular?**
 
 ### Directives
 
