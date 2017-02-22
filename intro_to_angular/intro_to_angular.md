@@ -175,17 +175,18 @@ After adding a `class="container"` to `<body>`, our `index.html` should now look
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>AngularJS</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-  <script src="js/app.js"></script>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
 </head>
-<body class="container">
-  <h1>AngularJS</h1>
-
+<body >
+  <div>
+    
+  </div>
+  <script src="js/app.js"></script>
 </body>
 </html>
 ```
@@ -305,16 +306,13 @@ Without further ado, let's define our first AngularJS controller and register it
 
 ```js
 
-  angular.module('myApp', []);
-
   // When only the name of the module is passed in,
   // the 'module()' method returns the specified module.
   // We can then register our controller with our module
   // using the 'controller()' method.
-  angular
-    .module('myApp')
-    .controller('MainController', function() {
-    // controller code
+  angular.module('myApp', [])
+    .controller('myCtrl', function() {
+      //code goes here
     });
 ```
 >**Note:** Usually each controller will be defined in its own file - and the above approach allows for this. FYI, in this particular example, we could have chained the `controller()` method directly to the `angular.module('myApp', [])`
@@ -365,24 +363,6 @@ Then, bind the `title` to our view:
 Cool!
 
 >**Note:** Since the function we use to define controllers are treated as constructor functions, the code in the function will execute only once. Therefore, be sure to code your controllers to initialize data the view needs and define the methods that will run in response to user actions.
-
-### Questions
-
-Discuss for two minutes:
-
-- **Why was `this` assigned to a variable within our controller function?**
-- **What is the name of the directive used to instantiate a controller?**
-- **What are the two primary responsibilities of a controller?**
-
-### Practice (5 mins)
-
-Create a method in your controller named `getRandom(upTo)` that returns a random integer between 0 and the `upTo` parameter.
-
-Bind a few `<p>` tags to the `getRandom()` method passing in different values for `upTo`.
-
-Hint: Don't forget to "call" your method in your view.
-
->We will discuss why we are getting errors in the console...
 
 ### Two-way Data Binding
 
