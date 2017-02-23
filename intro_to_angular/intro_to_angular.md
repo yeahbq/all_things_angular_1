@@ -583,9 +583,21 @@ Angular's dependency injection magic works by converting the parameters names in
 
 Get in the habit of putting reusable code in services and injecting those services where they are needed - dependency injection will make you a happy developer!
 
-#### Individual Practice (10 mins)
+#### Individual Practice (20 mins)
 
-Convert our current app to use `$scope`.
+In your controller create an object called gem, with three properties: name, price, description. Set them to some value, can you render this in your view?
+Can you set a canPurchase property to your object, so that the "Add to cart" button(which you will create in the view) shows up. Now try setting the canPurchase property to false what happens?
+Set another property to the object called soldOut, set in such a way that it hides the object if it is sold out!
+
+NOW!!!
+Create a new array of objects called gemsOfImagination, this array will have multiple objects with these properties: name, price, description, and canPurchase. Now can you display this in your view. Remember canPurchase property is attached to a button.
+
+### WRAP UP!
+What did we learn?
+- Modules
+- Controllers
+- Directives
+- Expressions
 
 ## References
 - [Official AngularJS website](https://angularjs.org/)
