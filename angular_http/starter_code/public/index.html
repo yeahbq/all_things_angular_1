@@ -16,9 +16,10 @@
       <ul id="presidents" class="indent-list">
         <h3>The Prezzz:</h3>
         <li ng-repeat="president in vm.all">
-          <strong>{{president.name}}</strong> <em>({{president.start}} - {{president.end}})</em>
-          <button>Uncovered?</button>
-          <button class="destroy">X</button>
+          <strong >{{president.name}}</strong> <em>({{president.start}} - {{president.end}})</em>
+          <button ng-click="vm.uncover(president)">Uncovered?</button>
+<!--           <button ng-show="vm.truth">ILLUMINATI</button>
+ -->          <button data-id="{{president._id}}" ng-click="vm.removePresident(president)" class="destroy">X</button>
         </li>
       </ul>
 
