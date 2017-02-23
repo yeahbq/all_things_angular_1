@@ -590,7 +590,7 @@ Can you set a canPurchase property to your object, so that the "Add to cart" but
 Set another property to the object called soldOut, set in such a way that it hides the object if it is sold out!
 
 NOW!!!
-Create a new array of objects called gemsOfImagination, this array will have multiple objects with these properties: name, price, description, and canPurchase. Now can you display this in your view. Remember canPurchase property is attached to a button.
+Create a new array of objects called gemsOfImagination, this array will have multiple objects with these properties: name, price, description, and canPurchase. Now can you display this in your view. Remember canPurchase property is attached to a button. Do you remember how to set a filter? look-up ^^, now can you look-up in angular documentation to see if there is a filter that you cans et on your property price such that it automatically attached '$' to the price?
 
 ### WRAP UP!
 What did we learn?
