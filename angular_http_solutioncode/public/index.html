@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="ThePresidentsApp">
+  <head>
+    <meta charset="utf-8">
+    <title>The Presidents App</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  </head>
+  <body>
+
+    <section ng-controller="PresidentsController as vm">
+      <div class="heading">
+        <h1>The True-True Alien Overlord Presidents of the United States of America</h1>
+      </div>
+
+      <ul id="presidents" class="indent-list">
+        <h3>The Prezzz:</h3>
+        <li ng-repeat="president in vm.all" ng-class="{'uncovered': president.uncovered}">
+          <strong>{{president.name}}</strong> <em>({{president.start}} - {{president.end}})</em>
+          <button ng-click="vm.uncover(president)">Uncovered?</button>
+          <button class="destroy" ng-click="vm.deletePresident(president)">X</button>
+        </li>
+      </ul>
+
+      <form class="add-president" ng-submit='vm.addPresident()'>
+        <div>
+          <label for="new-president-name">True-True President's Name:</label>
+          <input class="write-in" type="text" id="new-president-name" placeholder="Billy Clingon" ng-model='vm.newPresident.name'>
+        </div>
+
+        <div>
+          <label for="new-president-start">True-True President's Starting Year:</label>
+          <input class="write-in" type="number" id="new-president-start" placeholder="2001" ng-model='vm.newPresident.start'>
+        </div>
+
+        <div>
+          <label for="new-president-end">True-True President's Ending Year:</label>
+          <input class="write-in" type="number" id="new-president-end" placeholder="2009" ng-model='vm.newPresident.end'>
+        </div>
+
+        <div>
+          <input class="sub-button" type="submit" value="Add President">
+        </div>
+      </form>
+
+    </section>
+
+    <script src="/app.js" charset="utf-8"></script>
+    <script src="/controllers/presidentsController.js" charset="utf-8"></script>
+  </body>
+</html>
