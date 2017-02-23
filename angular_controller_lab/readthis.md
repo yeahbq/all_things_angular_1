@@ -25,7 +25,7 @@ A simple hardcoded Angular app with 3 controller files, an app file, and an `ind
 ## Additional Resources
 
 - Link to [Sargent Friends image](http://4.bp.blogspot.com/--e_BDE_jjKQ/VdtAbTHozTI/AAAAAAAAHsI/bGdPlHsDlZQ/s1600/Sargent_DIGITAL_Hero.jpg)
-- We'll learn about this in the next lesson, but if you want to tackle iterating through arrays or objects ahead of time, check out [`ng-repeat`](https://docs.angularjs.org/api/ng/directive/ngRepeat)
+
 
 
 
