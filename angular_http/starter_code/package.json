@@ -1,0 +1,16 @@
+{
+  "name": "express-routing-lab",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node ./server.js",
+    "seed": "node ./api/config/seeds.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "~4.13.1",
+    "method-override": "^2.3.4",
+    "mongoose": "^4.0.7",
+    "morgan": "~1.6.1"
+  },
+  "license": "ISC"
+}
