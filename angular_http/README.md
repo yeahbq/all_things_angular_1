@@ -25,10 +25,6 @@ because we're educated programmers who read the Matrix every day.
 
 **It's time to make these overlords public to the sheeple.**
 
-We've only been working with hardcoded data so far. Today that changes; 
-it's time to kick it up a notch if we're going to oust these dang 
-aliens.
-
 #### Welcome to your First MEAN App!
 
 We're going to learn a little about two different functionalities in 
@@ -54,7 +50,7 @@ Now, real quick – let's seed a little seed data. Go ahead and run
 ```
 
 Once you have some, do a quick `GET` request 
-`http://localhost:3000/api/presidents` in Postman and make sure you've 
+`http://localhost:3000/api/presidents` make sure you've 
 got some JSON coming back.
 
 ## Demo of Starter Code
@@ -143,7 +139,7 @@ PresidentsController.$inject = ['$http'];
 
 function PresidentsController($http){
   var vm = this;
-  self.all = [];
+  vm.all = [];
 
   function getPresidents(){
     $http
