@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- App declaration -->
+<html ng-app="IntroAngular">
+
+<head>
+    <title>Intro to Angular</title>
+</head>
+
+<!-- Controller declaration -->
+<body>
+    <div>Test: {{ 1+1 }}</div>
+    <div ng-controller="HomeController as home">
+      <div>Test: {{ home.test }}</div>
+      <div>Test: {{ home.count + 1}}</div>
+    </div>
+    <div ng-controller="CarController as car">
+      <div>Car Test: {{ car.test }}</div>
+    </div>
+
+
+    <!-- AngularJS CDN, must come first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.js"></script>
+
+    <!-- Our Javascript files, app.js must be loaded first -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/CarController.js"></script>
+</body>
+
+</html>

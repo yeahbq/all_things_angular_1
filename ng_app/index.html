@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+</head>
+<body class="container" ng-controller="MainController as ctrl" style = "background-color:{{ctrl.crazyColor}}">
+  <h1>{{ctrl.greeting}}</h1>
+  <p>{{1+0.5}}</p>
+  <label>Color: <input type="text" class="form-control" ng-model="ctrl.crazyColor"></label>
+  <div ng-show="ctrl.showNames">
+    Names:
+    <ul>
+      <li ng-repeat="name in ctrl.names">{{name | uppercase}}</li>
+    </ul>
+  </div>
+  <br>
+  <button class="btn btn-info" ng-click="ctrl.showNames = !ctrl.showNames">Show/Hide Names</button>
+  <div>
+    Extra Names:
+    <ul>
+      <li ng-repeat="name in ctrl.extraNames">{{name}}</li>
+    </ul>
+    <button class="btn btn-success" ng-click="ctrl.addName()">Add Name</button>
+  </div>
+  <div ng-hide="ctrl.gem.soldOut">
+    <h2>Gem Info</h2>
+    <p>{{ctrl.gem.name}}</p>
+    <p>{{ctrl.gem.price}}</p>
+    <p>{{ctrl.gem.description}}</p>
+    <button ng-show="ctrl.gem.canPurchase">Add to Cart</button>
+  </div>
+  <div ng-repeat="g in ctrl.gemsOfImagination">
+    <h2>Imaginary Gem Info</h2>
+    <p>{{g.name}}</p>
+    <p>{{g.price | currency}}</p>
+    <p>{{g.description}}</p>
+    <button ng-show="g.canPurchase">Add to Cart</button>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
